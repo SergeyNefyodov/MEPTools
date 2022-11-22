@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>MEPTools</Name>
+		<Assembly>C:\ProgramData\Autodesk\Revit\Addins\2022\MEPTools\MEPTools.dll</Assembly>
+		<AddInId>DA5C7994-5A3A-4327-9F08-DE38BF47EE9D</AddInId>
+		<FullClassName>MEPTools.MEPToolsApp</FullClassName>
+		<VendorId>CDS</VendorId>
+	</AddIn>
+</RevitAddIns>

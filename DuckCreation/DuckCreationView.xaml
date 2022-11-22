@@ -1,0 +1,71 @@
+﻿<Window x:Class="MEPTools.DuckCreationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MEPTools"
+             mc:Ignorable="d" 
+             Height="180" Width="370" ResizeMode="NoResize"
+             Title="Создание обхода инженерных коммуникаций"
+        
+        Background="LightBlue" WindowStartupLocation="CenterScreen" >   
+    <Window.Resources>
+        <Style x:Key="commonStyle" TargetType="Control">
+            <Style.Setters>
+                <Setter Property="Margin" Value="5"/>
+            </Style.Setters>
+        </Style>
+        <Style x:Key="textboxStyle" BasedOn="{StaticResource commonStyle}" TargetType="TextBox">
+            <Style.Setters>
+                <Setter Property="Width" Value="135"/>                
+                <Setter Property="FontFamily" Value="Isocpeur"/>                
+            </Style.Setters>            
+        </Style>
+        <Style x:Key="labelStyle"  TargetType="Label">
+            <Style.Setters>
+                <Setter Property="Width" Value="200"/>                
+            </Style.Setters>
+        </Style>
+        <Style x:Key="radioStyle" BasedOn="{StaticResource commonStyle}" TargetType="RadioButton">
+            <Style.Setters>
+                               
+            </Style.Setters>
+        </Style>
+        <Style x:Key="checkStyle" BasedOn="{StaticResource commonStyle}" TargetType="CheckBox">
+            <Style.Setters>
+                <Setter Property="Margin" Value="5"/>
+            </Style.Setters>
+        </Style>
+        <Style x:Key="buttonStyle" BasedOn="{StaticResource commonStyle}" TargetType="Button">
+            <Style.Setters>
+                <Setter Property="Background" Value="LightYellow"/>
+                <Setter Property="Padding" Value="3"/>
+            </Style.Setters>            
+        </Style>
+        
+    </Window.Resources>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Name="offsetLabel" Content="_Введите смещение в мм" Style="{StaticResource labelStyle}" Target="{Binding ElementName=offsetBox, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Name="offsetBox"  Style="{StaticResource textboxStyle}" Text="{Binding Offset}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Name="angleLabel" Style="{StaticResource labelStyle}" Content="Введите _угол в градусах (до 90°) " Target="{Binding ElementName=offsetBox, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Name="angleBox"  Style="{StaticResource textboxStyle}" Text="{Binding Angle}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" >
+            <RadioButton Name="upButton" Style="{StaticResource radioStyle}" GroupName="dir" Content="Вверх" IsChecked ="{Binding IsUp}"/>
+            <RadioButton GroupName="dir" Style="{StaticResource radioStyle}" Content="Вниз" IsChecked="True"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <CheckBox Style="{StaticResource checkStyle}" Content="Работать циклично" IsChecked="{Binding IsCyclic}"/>
+            <CheckBox Style="{StaticResource checkStyle}" Content="Включить привязку" IsChecked="{Binding HasSnap}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Выполнить" Style="{StaticResource buttonStyle}" Command="{Binding CreateDuck}"/>
+            <Button Content="Отмена" Style="{StaticResource buttonStyle}" IsCancel="True" Click="Cancel_Click"/>            
+        </StackPanel>
+        
+    </StackPanel>
+        
+</Window>
